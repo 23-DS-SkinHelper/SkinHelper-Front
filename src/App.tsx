@@ -3,8 +3,15 @@ import Camera from "./components/atoms/Camera/Camera";
 import Footer from "./components/atoms/Footer/Footer";
 import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
+import Loading from "./components/organisms/Loading/Loading";
 
 const App = () => {
+  // const [state, setState] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+
+  const state = true;
+  const isLoading = true;
+
   return (
     <>
       <div className="mx-70 my-50 flex flex-col justify-between">
@@ -12,9 +19,7 @@ const App = () => {
         <div>
           <div className="flex flex-1">
             <Camera />
-
-            {/* TODO-초기 렌더링만 설계 */}
-            <Initial />
+            {isLoading ? <Loading /> : state ? <div>result</div> : <Initial />}
           </div>
         </div>
         <Footer />
