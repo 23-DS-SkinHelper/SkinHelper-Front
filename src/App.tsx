@@ -3,7 +3,7 @@ import Camera from "./components/atoms/Camera/Camera";
 import Footer from "./components/atoms/Footer/Footer";
 import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
-import Loading from "./components/atoms/Loading/Loading";
+import Loading from "./components/organisms/Loading/Loading";
 
 const App = () => {
   // const [state, setState] = useState(false);
