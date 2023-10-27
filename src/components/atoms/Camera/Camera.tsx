@@ -4,10 +4,11 @@ import { useState } from "react";
 
 export type cameraProps = {
   result: string;
+  setResult: (value: string) => void;
   setIsUpload: (value: boolean) => void;
 };
 
-const Camera = ({ result, setIsUpload }: cameraProps) => {
+const Camera = ({ result, setResult, setIsUpload }: cameraProps) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,7 @@ const Camera = ({ result, setIsUpload }: cameraProps) => {
       reader.onload = () => {
         setImageSrc(reader.result as string);
         setIsUpload(true);
+        setResult("흑색종");
       };
     }
   };
@@ -52,13 +54,10 @@ const Camera = ({ result, setIsUpload }: cameraProps) => {
               style={{ objectFit: "cover", width: "100%", height: "100%" }}
             />
           </div>
-           <Result result={result} />
         ) : (
           <CameraAlt style={{ fontSize: "80px", cursor: "pointer" }} onClick={handleCameraClick} />
         )}
       </div>
-
-      
       <input
         type="file"
         id="chooseFile"
@@ -67,8 +66,7 @@ const Camera = ({ result, setIsUpload }: cameraProps) => {
         style={{ display: "none" }}
         onChange={(e) => onUpload(e)}
       />
-      
-     
+      {result && <Result result={result} />}
     </div>
   );
 };
