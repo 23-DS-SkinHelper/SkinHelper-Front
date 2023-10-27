@@ -6,6 +6,7 @@ import Guide from "./components/atoms/Guide/Guide";
 import { useState } from "react";
 
 const App = () => {
+  const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
   const [isUpload, setIsUpload] = useState(false);
 
   return (
@@ -14,7 +15,7 @@ const App = () => {
         <Header />
         <div>
           <div className="flex flex-1">
-            <Camera setIsUpload={setIsUpload} />
+            <Camera result={result} setResult={setResult} setIsUpload={setIsUpload} />
 
             {isUpload ? <div>result</div> : <Initial />}
           </div>

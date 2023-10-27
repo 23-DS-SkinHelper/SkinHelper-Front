@@ -1,11 +1,14 @@
 import { CameraAlt } from "@mui/icons-material";
+import Result from "../Result/Result";
 import { useState } from "react";
 
 export type cameraProps = {
+  result: string;
+  setResult: (value: string) => void;
   setIsUpload: (value: boolean) => void;
 };
 
-const Camera = ({ setIsUpload }: cameraProps) => {
+const Camera = ({ result, setResult, setIsUpload }: cameraProps) => {
   const [imageSrc, setImageSrc] = useState<string | null>(null);
 
   const onUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -17,6 +20,7 @@ const Camera = ({ setIsUpload }: cameraProps) => {
       reader.onload = () => {
         setImageSrc(reader.result as string);
         setIsUpload(true);
+        setResult("흑색종");
       };
     }
   };
@@ -29,7 +33,7 @@ const Camera = ({ setIsUpload }: cameraProps) => {
   };
 
   return (
-    <div className="w-400 mt-46">
+    <div className="w-400 mt-46 flex flex-col ">
       <div className="text-28 leading-32 font-semibold mb-40">
         피부암으로 의심되는 부분 사진을 <br />
         업로드해 주세요!
@@ -54,7 +58,6 @@ const Camera = ({ setIsUpload }: cameraProps) => {
           <CameraAlt style={{ fontSize: "80px", cursor: "pointer" }} onClick={handleCameraClick} />
         )}
       </div>
-
       <input
         type="file"
         id="chooseFile"
@@ -63,6 +66,7 @@ const Camera = ({ setIsUpload }: cameraProps) => {
         style={{ display: "none" }}
         onChange={(e) => onUpload(e)}
       />
+      {result && <Result result={result} />}
     </div>
   );
 };
