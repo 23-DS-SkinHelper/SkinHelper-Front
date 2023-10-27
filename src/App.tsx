@@ -5,13 +5,16 @@ import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
 
 const App = () => {
+  // const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
+  const result = "흑색종";
+
   return (
     <>
       <div className="mx-70 my-50 flex flex-col justify-between">
         <Header />
         <div>
           <div className="flex flex-1">
-            <Camera />
+            <Camera result={result} />
 
             {/* TODO-초기 렌더링만 설계 */}
             <Initial />
