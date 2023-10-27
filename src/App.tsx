@@ -3,10 +3,12 @@ import Camera from "./components/atoms/Camera/Camera";
 import Footer from "./components/atoms/Footer/Footer";
 import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
+import { useState } from "react";
 
 const App = () => {
   // const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
   const result = "흑색종";
+  const [isUpload, setIsUpload] = useState(false);
 
   return (
     <>
@@ -14,10 +16,9 @@ const App = () => {
         <Header />
         <div>
           <div className="flex flex-1">
-            <Camera result={result} />
+            <Camera result={result} setIsUpload={setIsUpload}/>
 
-            {/* TODO-초기 렌더링만 설계 */}
-            <Initial />
+            {isUpload ? <div>result</div> : <Initial />}
           </div>
         </div>
         <Footer />
