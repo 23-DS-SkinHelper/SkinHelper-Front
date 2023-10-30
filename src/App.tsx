@@ -5,10 +5,14 @@ import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
 import Description from "./components/atoms/Description/Description";
 import { useState } from "react";
+import { CANCER_NAME_TABLE } from "./utils/utils";
 
 const App = () => {
   const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
   const [isUpload, setIsUpload] = useState(true);
+
+  const label = "vasc";
+  const cancerData = CANCER_NAME_TABLE[label];
 
   return (
     <>
@@ -19,10 +23,24 @@ const App = () => {
             <Camera result={result} setResult={setResult} setIsUpload={setIsUpload} />
 
             {isUpload ? (
-              <div className="flex min-w-800">
-                <Description />
-                <Description />
-              </div>
+              cancerData ? (
+                <div className="flex min-w-800">
+                  <Description
+                    kor={cancerData.kor}
+                    eng={cancerData.eng}
+                    classification="원인"
+                    content={cancerData.cause}
+                  />
+                  <Description
+                    kor={cancerData.kor}
+                    eng={cancerData.eng}
+                    classification="치료법"
+                    content={cancerData.treatment}
+                  />
+                </div>
+              ) : (
+                <div>Error: Cancer Not Found</div>
+              )
             ) : (
               <Initial />
             )}
