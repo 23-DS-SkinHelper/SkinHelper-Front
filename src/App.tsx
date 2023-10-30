@@ -6,10 +6,11 @@ import Guide from "./components/atoms/Guide/Guide";
 import Description from "./components/atoms/Description/Description";
 import { useState } from "react";
 import { CANCER_NAME_TABLE } from "./utils/utils";
+// import Error from "./components/atoms/Error/Error";
 
 const App = () => {
   const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
-  const [isUpload, setIsUpload] = useState(true);
+  const [isUpload, setIsUpload] = useState(false);
 
   const label = "vasc";
   const cancerData = CANCER_NAME_TABLE[label];
