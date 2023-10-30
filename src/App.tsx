@@ -3,11 +3,12 @@ import Camera from "./components/atoms/Camera/Camera";
 import Footer from "./components/atoms/Footer/Footer";
 import Header from "./components/organisms/Header/Header";
 import Guide from "./components/atoms/Guide/Guide";
+import Description from "./components/atoms/Description/Description";
 import { useState } from "react";
 
 const App = () => {
   const [result, setResult] = useState(""); // TODO-CNN 모델과 연결
-  const [isUpload, setIsUpload] = useState(false);
+  const [isUpload, setIsUpload] = useState(true);
 
   return (
     <>
@@ -17,7 +18,14 @@ const App = () => {
           <div className="flex flex-1">
             <Camera result={result} setResult={setResult} setIsUpload={setIsUpload} />
 
-            {isUpload ? <div>result</div> : <Initial />}
+            {isUpload ? (
+              <div className="flex min-w-800">
+                <Description />
+                <Description />
+              </div>
+            ) : (
+              <Initial />
+            )}
           </div>
         </div>
         <Footer />
