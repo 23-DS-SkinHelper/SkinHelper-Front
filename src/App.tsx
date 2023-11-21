@@ -2,7 +2,6 @@ import Initial from "./components/atoms/Initial/Initial";
 import Camera from "./components/atoms/Camera/Camera";
 import Footer from "./components/atoms/Footer/Footer";
 import Header from "./components/organisms/Header/Header";
-import Guide from "./components/atoms/Guide/Guide";
 import Description from "./components/atoms/Description/Description";
 import { useState } from "react";
 import { CANCER_NAME_TABLE } from "./utils/utils";
@@ -48,9 +47,6 @@ const App = () => {
           </div>
         </div>
         <Footer />
-      </div>
-      <div className="fixed right-[50px] bottom-[50px]">
-        <Guide />
       </div>
     </>
   );
